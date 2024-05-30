@@ -1,3 +1,10 @@
+# Use an official lightweight Scala and SBT image as a parent image
+FROM hseeberger/scala-sbt:11.0.13_1.6.1_2.13.7 as build
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
 COPY . /app
 
 # Compile and package the application
