@@ -26,4 +26,4 @@ EXPOSE 9002
 ENV PLAY_HTTP_SECRET=thisisasecretfortheapplicationandwekeepittosecuretheapplicationletuscheckandithastowork
 
 # Run the binary script when the container launches
-CMD ["./bin/scala-play", "-Dplay.http.secret.key=$PLAY_HTTP_SECRET"]
+CMD ["./bin/activitytrackerservice", "-Dplay.http.secret.key=$PLAY_HTTP_SECRET"]
