@@ -61,6 +61,7 @@ class KafkaMessageConsumer @Inject()(config: Configuration, activityRepository: 
   consumer.subscribe(List(config.get[String]("kafka.topic")).asJava)
 
   def receiveMessages(): Future[Unit] = Future {
+    println("Started receiving messages")
     try {
       while (true) {
         val records = consumer.poll(java.time.Duration.ofMillis(100))
@@ -81,4 +82,10 @@ class KafkaMessageConsumer @Inject()(config: Configuration, activityRepository: 
       consumer.close() // Close the Kafka consumer when done
     }
   }
+
+  lifecycle.addStopHook { () =>
+    Future.successful(consumer.close())
+  }
+
+  receiveMessages()
 }

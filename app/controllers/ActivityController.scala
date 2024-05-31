@@ -10,7 +10,7 @@ import scala.concurrent.ExecutionContext
 
 class ActivityController @Inject() (activityRepository: ActivityRepository, kafkaMessageConsumer: KafkaMessageConsumer, cc: ControllerComponents)(implicit ec: ExecutionContext) extends AbstractController(cc) {
   implicit val userFormat: Format[Activity] = Json.format[Activity]
-
+  println("In Activity Controller")
   kafkaMessageConsumer.receiveMessages()
 
   def index() = Action { implicit request: Request[AnyContent] =>
