@@ -30,7 +30,7 @@ class KafkaMessageConsumer @Inject()(config: Configuration, activityRepository: 
     val currentDateTime: LocalDateTime = LocalDateTime.now()
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
     val formattedDateTime: String = currentDateTime.format(formatter)
-    return formattedDateTime
+    formattedDateTime
   }
 
   private def idGenerator: String = {
